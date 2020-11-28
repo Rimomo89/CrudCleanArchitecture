@@ -1,0 +1,18 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+	implementation project(':crud-controller')
+	implementation project(':jpa-repository')
+    implementation project(':model')
+    implementation project(':usecase')
+    compile 'org.springframework.boot:spring-boot-starter'
+
+    compile 'org.reactivecommons.utils:object-mapper:0.1.0'
+    runtime('org.springframework.boot:spring-boot-devtools')
+    runtimeOnly 'com.h2database:h2'
+}
+
+task explodedJar(type: Copy) {
+    with jar
+    into "${buildDir}/exploded"
+}
